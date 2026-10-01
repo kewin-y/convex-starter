@@ -54,7 +54,6 @@ export function UserMenu({
   const trigger = sidebar ? (
     <SidebarMenuButton
       size="lg"
-      className="px-0"
       aria-label="Open user menu"
       disabled={pending}
     />

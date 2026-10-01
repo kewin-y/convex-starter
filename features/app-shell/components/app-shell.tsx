@@ -22,7 +22,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
 function AppShellContent({ children }: { children: React.ReactNode }) {
   const { state, isMobile, openMobile } = useSidebar();
   return (
-    <SidebarInset className="min-w-0">
+    <SidebarInset className="min-w-0 overflow-clip">
       <a
         href="#main-content"
         className="sr-only fixed top-2 left-2 z-60 rounded-md bg-background p-3 focus:not-sr-only"
@@ -30,7 +30,7 @@ function AppShellContent({ children }: { children: React.ReactNode }) {
         Skip to content
       </a>
       <div className="min-w-0">
-        <header className="sticky top-0 z-20 flex h-16 items-center justify-between gap-4 border-b bg-background px-4 sm:px-8">
+        <header className="flex h-16 items-center justify-between gap-4 border-b bg-background px-4 sm:px-8">
           <div className="flex items-center gap-3">
             <SidebarTrigger
               aria-label={

@@ -7,7 +7,6 @@ import {
   Activity01Icon,
   DashboardSquare01Icon,
   Folder01Icon,
-  Settings01Icon,
 } from "@hugeicons/core-free-icons";
 import { Brand } from "@/components/brand";
 import { brandName } from "@/lib/branding";
@@ -23,7 +22,6 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarSeparator,
   useSidebar,
 } from "@/components/ui/sidebar";
 
@@ -62,7 +60,6 @@ export function AppSidebar() {
           <SidebarMenuItem>
             <SidebarMenuButton
               size="lg"
-              className="px-0"
               render={
                 <Brand
                   render={<Link href="/" aria-label={`${brandName} home`} />}
@@ -105,15 +102,6 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
       <SidebarFooter>
-        <SidebarMenu>
-          <SidebarMenuItem>
-            <SidebarMenuButton disabled aria-label="Settings unavailable">
-              <HugeiconsIcon icon={Settings01Icon} aria-hidden="true" />
-              <span>Settings · Unavailable</span>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-        </SidebarMenu>
-        <SidebarSeparator className="mx-0" />
         <SidebarMenu>
           <SidebarMenuItem>
             <UserMenu sidebar />

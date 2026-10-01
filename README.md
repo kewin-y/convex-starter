@@ -50,16 +50,22 @@ npm create convex@latest -- -t nextjs-convexauth
 - Chart axis labels retain their text size independently of the responsive plot.
 - Sidebar selection follows the dashboard section hash, including direct links
   and browser back/forward navigation.
-- The sidebar uses shadcn's inset layout and shared menu primitives. Navigation
-  and Settings stay 32px tall with 16px icons in both desktop states; collapsed
-  controls are 32×32px and retain the expanded icon centerline. The logo and
-  account avatar remain 32×32px. The account row accommodates two lines when
-  expanded and collapses to the avatar without resizing it.
+- The sidebar follows shadcn's inset hierarchy: branding in `SidebarHeader`,
+  primary and bottom-aligned secondary navigation in `SidebarContent` groups,
+  and the account menu in `SidebarFooter`. These share aligned control edges.
+  Padding comes from the stock sidebar primitives, not caller overrides.
+  Navigation and Settings use the default menu size; branding and account rows
+  use `size="lg"`. Collapsed controls are 32×32px, with the logo and account
+  avatar retaining their 32×32px size.
+  `SidebarSeparator` keeps symmetric insets using `data-horizontal:w-auto`,
+  matching the specificity of the Base UI separator's horizontal width rule.
 - Collapsed navigation has label tooltips. The header trigger and Ctrl/Cmd+B
   toggle the desktop rail; on mobile, the trigger opens a drawer that closes
   after selecting a section. The header account button keeps its own layout.
-- The dashboard shell and document canvas share an opaque, theme-aware background
-  so overscrolling does not expose a differently colored strip.
+- On app-shell pages, `html`, `body`, and the shell wrapper use `--sidebar`,
+  matching the sidebar in both themes so overscroll reveals the same color.
+- The inset content panel clips its children to its rounded corners. The header
+  scrolls with the page rather than sticking to the viewport.
 
 Workspace metrics, activity, and projects are illustrative sample data. The
 legacy `/server` Convex demo is no longer an application route.

@@ -130,7 +130,7 @@
   html:has([data-slot="app-shell"]),
   body:has([data-slot="app-shell"]),
   [data-slot="app-shell"] {
-    background-color: color-mix(in oklab, var(--muted) 30%, var(--background));
+    background-color: var(--sidebar);
   }
   a:focus-visible {
     @apply rounded-sm outline-2 outline-offset-4 outline-ring;
