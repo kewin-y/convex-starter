@@ -6,6 +6,7 @@ import ConvexClientProvider from "@/components/ConvexClientProvider";
 import { cn } from "@/lib/utils";
 import { themeScript } from "@/components/theme-toggle";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { brandName } from "@/lib/branding";
 
 const figtree = Figtree({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -20,7 +21,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: { default: "Acme — A simple SaaS starter", template: "%s | Acme" },
+  title: {
+    default: `${brandName} — A simple SaaS starter`,
+    template: `%s | ${brandName}`,
+  },
   description: "A thoughtful starting point for your next SaaS application.",
 };
 

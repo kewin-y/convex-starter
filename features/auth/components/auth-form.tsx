@@ -6,6 +6,7 @@ import { useAuthActions } from "@convex-dev/auth/react";
 import { useState } from "react";
 import { useAppForm } from "@/hooks/use-app-form";
 import { Brand } from "@/components/brand";
+import { brandName } from "@/lib/branding";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Card, CardContent } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
@@ -84,7 +85,7 @@ export function AuthForm({ flow }: { flow: "signIn" | "signUp" }) {
   return (
     <div className="flex min-h-svh flex-col bg-muted/30">
       <header className="flex items-center justify-between p-6">
-        <Brand />
+        <Brand render={<Link href="/" aria-label={`${brandName} home`} />} />
         <ThemeToggle />
       </header>
       <main className="flex flex-1 items-center justify-center px-4 py-12">
@@ -99,7 +100,7 @@ export function AuthForm({ flow }: { flow: "signIn" | "signUp" }) {
             <p className="mt-3 text-sm text-muted-foreground">
               {signup
                 ? "A simple starting point for what comes next."
-                : "Log in to your Acme workspace."}
+                : `Log in to your ${brandName} workspace.`}
             </p>
           </div>
           <Card>
@@ -159,7 +160,7 @@ export function AuthForm({ flow }: { flow: "signIn" | "signUp" }) {
             </CardContent>
           </Card>
           <p className="mt-6 text-center text-sm text-muted-foreground">
-            {signup ? "Already have an account?" : "New to Acme?"}{" "}
+            {signup ? "Already have an account?" : `New to ${brandName}?`}{" "}
             <Link
               className="font-medium text-foreground underline underline-offset-4"
               href={signup ? "/login" : "/signup"}

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useSyncExternalStore } from "react";
 import { HugeiconsIcon } from "@hugeicons/react";
 import {
@@ -9,6 +10,7 @@ import {
   Settings01Icon,
 } from "@hugeicons/core-free-icons";
 import { Brand } from "@/components/brand";
+import { brandName } from "@/lib/branding";
 import { UserMenu } from "@/features/auth/components/user-menu";
 import {
   Sidebar,
@@ -48,8 +50,7 @@ function getServerHash() {
   return "";
 }
 export function AppSidebar() {
-  const { state, isMobile, setOpenMobile } = useSidebar();
-  const collapsed = state === "collapsed" && !isMobile;
+  const { setOpenMobile } = useSidebar();
   const hash = useSyncExternalStore(subscribeToHash, getHash, getServerHash);
   const activeHref =
     navigation.find(({ href }) => href.endsWith(hash) && hash !== "")?.href ??
@@ -57,9 +58,19 @@ export function AppSidebar() {
   return (
     <Sidebar collapsible="icon" variant="inset" aria-label="Workspace sidebar">
       <SidebarHeader>
-        <div className="flex h-12 items-center">
-          <Brand compact={collapsed} />
-        </div>
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton
+              size="lg"
+              className="px-0"
+              render={
+                <Brand
+                  render={<Link href="/" aria-label={`${brandName} home`} />}
+                />
+              }
+            />
+          </SidebarMenuItem>
+        </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>

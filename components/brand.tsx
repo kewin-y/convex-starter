@@ -1,29 +1,35 @@
-import Link from "next/link";
+"use client";
+
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
 import { cn } from "@/lib/utils";
+import { CatIcon } from "@hugeicons/core-free-icons";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { brandName } from "@/lib/branding";
 
 export function Brand({
-  compact = false,
-  size = "sm",
-}: {
-  compact?: boolean;
-  size?: "sm" | "lg";
-}) {
-  return (
-    <Link
-      href="/"
-      aria-label="Acme home"
-      className="inline-flex shrink-0 items-center gap-2.5 rounded-md font-semibold tracking-tight"
-    >
-      <span
-        aria-hidden="true"
-        className={cn(
-          "flex items-center justify-center bg-primary text-lg text-primary-foreground",
-          size === "lg" ? "size-10 rounded-md" : "size-8 rounded-lg",
-        )}
-      >
-        a<span className="text-primary-foreground/60">.</span>
-      </span>
-      <span className={cn("text-lg", compact && "sr-only")}>Acme</span>
-    </Link>
-  );
+  className,
+  render,
+  ...props
+}: useRender.ComponentProps<"div">) {
+  return useRender({
+    defaultTagName: "div",
+    render,
+    props: mergeProps<"div">(props, {
+      className: cn("inline-flex items-center gap-2.5", className),
+      children: (
+        <>
+          <div
+            aria-hidden="true"
+            className="flex aspect-square size-8 shrink-0 items-center justify-center rounded-lg bg-primary text-primary-foreground"
+          >
+            <HugeiconsIcon icon={CatIcon} className="size-4" />
+          </div>
+          <span className="truncate font-medium text-md leading-tight">
+            {brandName}
+          </span>
+        </>
+      ),
+    }),
+  });
 }

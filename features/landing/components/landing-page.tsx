@@ -7,6 +7,7 @@ import {
   Folder01Icon,
 } from "@hugeicons/core-free-icons";
 import { Brand } from "@/components/brand";
+import { brandName } from "@/lib/branding";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
 import {
@@ -26,7 +27,7 @@ export function LandingPage({ authenticated }: { authenticated: boolean }) {
     <div className="min-h-svh">
       <header className="border-b">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-5 py-5 sm:px-8">
-          <Brand />
+          <Brand render={<Link href="/" aria-label={`${brandName} home`} />} />
           <nav
             aria-label="Main navigation"
             className="hidden items-center gap-5 text-sm sm:flex"
@@ -130,12 +131,7 @@ export function LandingPage({ authenticated }: { authenticated: boolean }) {
               aria-label="Static sample dashboard preview"
             >
               <div className="flex flex-wrap items-center justify-between gap-3 bg-card px-5 py-4">
-                <div className="flex items-center gap-3">
-                  <span className="flex size-8 items-center justify-center rounded-lg bg-primary text-sm font-semibold text-primary-foreground">
-                    a.
-                  </span>
-                  <span className="text-sm font-semibold">Acme workspace</span>
-                </div>
+                <Brand />
                 <Badge variant="secondary">Sample data</Badge>
               </div>
               <Separator />
@@ -246,7 +242,7 @@ export function LandingPage({ authenticated }: { authenticated: boolean }) {
           <div className="flex items-center gap-5">
             <Brand />
             <p className="text-xs text-muted-foreground">
-              © {new Date().getFullYear()} Acme
+              © {new Date().getFullYear()} {brandName}
             </p>
           </div>
           <div className="flex gap-5 text-xs text-muted-foreground">

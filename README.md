@@ -30,6 +30,13 @@ npm create convex@latest -- -t nextjs-convexauth
 - `features/app-shell` owns the application frame, sidebar navigation, and
   responsive shell controls. The dashboard route layout composes `AppShell`;
   `features/dashboard` owns the workspace content rendered inside it.
+- `lib/branding.ts` defines the shared application name for metadata, auth copy,
+  and the footer. `components/brand.tsx` owns the logo and wordmark, reused in
+  the sidebar, landing header, workspace preview, auth headers, and footer.
+  `Brand` renders a static `div` by default. It uses Base UI's `useRender`:
+  pass `render={<Link href="/" />}` for a home link or
+  `render={<button type="button" />}` for an action. The render API merges
+  styles, event handlers, and refs with the supplied element.
 - `/` is the public landing page, with a responsive split hero, an anchored
   workspace preview, feature cards, and a closing account action. The preview's
   metrics use a two-column layout so labels remain readable on mobile.
