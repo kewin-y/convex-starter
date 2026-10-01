@@ -20,6 +20,7 @@ export function AuthForm({ flow }: { flow: "signIn" | "signUp" }) {
   const { signIn } = useAuthActions();
   const router = useRouter();
   const [error, setError] = useState<string | null>(null);
+
   const form = useAppForm({
     defaultValues: defaultAuthValues,
     validators: { onChange: authSchemas[flow] },

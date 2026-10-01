@@ -1,6 +1,6 @@
 "use client";
 
-import { AppSidebar } from "@/features/dashboard/components/app-sidebar";
+import { AppSidebar } from "@/features/app-shell/components/app-sidebar";
 import { UserMenu } from "@/features/auth/components/user-menu";
 import { ThemeToggle } from "@/components/theme-toggle";
 import {
@@ -14,12 +14,12 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   return (
     <SidebarProvider data-slot="app-shell">
       <AppSidebar />
-      <DashboardContent>{children}</DashboardContent>
+      <AppShellContent>{children}</AppShellContent>
     </SidebarProvider>
   );
 }
 
-function DashboardContent({ children }: { children: React.ReactNode }) {
+function AppShellContent({ children }: { children: React.ReactNode }) {
   const { state, isMobile, openMobile } = useSidebar();
   return (
     <SidebarInset className="min-w-0">

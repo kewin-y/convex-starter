@@ -27,6 +27,9 @@ npm create convex@latest -- -t nextjs-convexauth
 
 ## App UI
 
+- `features/app-shell` owns the application frame, sidebar navigation, and
+  responsive shell controls. The dashboard route layout composes `AppShell`;
+  `features/dashboard` owns the workspace content rendered inside it.
 - `/` is the public landing page, with a responsive split hero, an anchored
   workspace preview, feature cards, and a closing account action. The preview's
   metrics use a two-column layout so labels remain readable on mobile.
