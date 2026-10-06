@@ -31,9 +31,10 @@ npm create convex@latest -- -t nextjs-convexauth
   responsive shell controls. The dashboard route layout composes `AppShell`;
   `features/dashboard` owns the workspace content rendered inside it.
 - `app/globals.css` contains shadcn-managed imports, theme tokens, and base styles.
-  Application focus and reduced-motion rules live in `app/application.css`;
-  the shell's document background rules live in `features/app-shell/styles.css`.
-  The root layout imports both application stylesheets after `globals.css`.
+  Application focus and reduced-motion rules live in `app/application.css`,
+  imported by the root layout after `globals.css`. The shell's document background
+  rules live in `features/app-shell/styles/styles.css`, imported by the dashboard
+  layout. These remain scoped to the presence of the shell after client navigation.
 - Theme management uses [`@wrksz/themes`](https://themes.wrksz.dev): the Next.js
   provider in the root layout sets the light/dark class before hydration, and
   `ThemeToggle` uses its client hook. Preferences persist under the existing
