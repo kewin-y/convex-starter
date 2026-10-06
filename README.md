@@ -30,6 +30,10 @@ npm create convex@latest -- -t nextjs-convexauth
 - `features/app-shell` owns the application frame, sidebar navigation, and
   responsive shell controls. The dashboard route layout composes `AppShell`;
   `features/dashboard` owns the workspace content rendered inside it.
+- `app/globals.css` contains shadcn-managed imports, theme tokens, and base styles.
+  Application focus and reduced-motion rules live in `app/application.css`;
+  the shell's document background rules live in `features/app-shell/styles.css`.
+  The root layout imports both application stylesheets after `globals.css`.
 - `lib/branding.ts` defines the shared application name for metadata, auth copy,
   and the footer. `components/brand.tsx` owns the logo and wordmark, reused in
   the sidebar, landing header, workspace preview, auth headers, and footer.

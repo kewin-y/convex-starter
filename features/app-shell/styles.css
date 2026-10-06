@@ -1,0 +1,7 @@
+@layer base {
+  html:has([data-slot="app-shell"]),
+  body:has([data-slot="app-shell"]),
+  [data-slot="app-shell"] {
+    background-color: var(--sidebar);
+  }
+}
