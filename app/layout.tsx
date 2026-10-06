@@ -6,7 +6,7 @@ import "@/features/app-shell/styles.css";
 import { ConvexAuthNextjsServerProvider } from "@convex-dev/auth/nextjs/server";
 import ConvexClientProvider from "@/components/ConvexClientProvider";
 import { cn } from "@/lib/utils";
-import { themeScript } from "@/components/theme-toggle";
+import { ThemeProvider } from "@wrksz/themes/next";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { brandName } from "@/lib/branding";
 
@@ -42,15 +42,20 @@ export default function RootLayout({
         suppressHydrationWarning
         className={cn("font-sans", figtree.variable)}
       >
-        <head>
-          <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-        </head>
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
-          <ConvexClientProvider>
-            <TooltipProvider>{children}</TooltipProvider>
-          </ConvexClientProvider>
+          <ThemeProvider
+            attribute="class"
+            storage="localStorage"
+            storageKey="acme-theme"
+            defaultTheme="system"
+            enableSystem
+          >
+            <ConvexClientProvider>
+              <TooltipProvider>{children}</TooltipProvider>
+            </ConvexClientProvider>
+          </ThemeProvider>
         </body>
       </html>
     </ConvexAuthNextjsServerProvider>

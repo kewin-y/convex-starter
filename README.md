@@ -34,6 +34,11 @@ npm create convex@latest -- -t nextjs-convexauth
   Application focus and reduced-motion rules live in `app/application.css`;
   the shell's document background rules live in `features/app-shell/styles.css`.
   The root layout imports both application stylesheets after `globals.css`.
+- Theme management uses [`@wrksz/themes`](https://themes.wrksz.dev): the Next.js
+  provider in the root layout sets the light/dark class before hydration, and
+  `ThemeToggle` uses its client hook. Preferences persist under the existing
+  `acme-theme` local-storage key and sync across tabs. With no saved preference,
+  the theme follows system color-scheme changes.
 - `lib/branding.ts` defines the shared application name for metadata, auth copy,
   and the footer. `components/brand.tsx` owns the logo and wordmark, reused in
   the sidebar, landing header, workspace preview, auth headers, and footer.
